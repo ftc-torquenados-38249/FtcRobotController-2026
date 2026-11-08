@@ -49,6 +49,7 @@ import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 
 @TeleOp(name = "Mec BioBuzz StarterBot Teleop", group = "StarterBot")
 //@Disabled
+@SuppressWarnings("unused")
 public class BioBuzzStarterbotTeleopMecanum extends OpMode {
 
     // Declare OpMode members.
@@ -122,6 +123,8 @@ public class BioBuzzStarterbotTeleopMecanum extends OpMode {
         rightFrontDrive.setDirection(DcMotor.Direction.FORWARD);
         leftBackDrive.setDirection(DcMotor.Direction.REVERSE);
         rightBackDrive.setDirection(DcMotor.Direction.FORWARD);
+        intake.setDirection(DcMotor.Direction.REVERSE);
+        launcher.setDirection(DcMotor.Direction.REVERSE);
 
         /*
          * Setting zeroPowerBehavior to BRAKE enables a "brake mode". This causes the motor to
@@ -230,6 +233,10 @@ public class BioBuzzStarterbotTeleopMecanum extends OpMode {
          */
         telemetry.addData("Motors", "left (%.2f), right (%.2f)", leftFrontPower, rightFrontPower);
         telemetry.addData("Triggers", "left (%.2f, right (%.2f)",gamepad1.left_trigger, gamepad1.right_trigger);
+        telemetry.addData("Intake servo power right", rightIntakeServo.getPower());
+        telemetry.addData("Intake servo power left", leftIntakeServo.getPower());
+        telemetry.addData("Intake servo right name", rightIntakeServo.getDeviceName());
+        telemetry.addData("Intake servo left name", leftIntakeServo.getDeviceName());
     }
 
     /*
